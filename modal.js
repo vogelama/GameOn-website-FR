@@ -21,7 +21,7 @@ function launchModal() {
   modalbg.style.display = "block";
 }
 
-//launch modal close event
+// launch modal close event
 closeForm.forEach((btn) => btn.addEventListener("click", closeModal));
 
 // launch modal close form
@@ -29,7 +29,6 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
-
-
+// form must be valid when user clicks submit button 
 
 
