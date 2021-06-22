@@ -268,8 +268,10 @@ label {
   font-size: 17px;
   font-weight: normal;
   display: inline-block;
-  margin-bottom: 11px;
+  margin-bottom: 5px;
+  margin-top: 25px;
 }
+
 input {
   padding: 8px;
   border: 0.8px solid #ccc;
@@ -283,11 +285,49 @@ input {
   font-size: 20px;
   height: 48px;
 }
-.formData:nth-child(5) {
-  padding-top:10px;
+.formData {
+  position: relative;
 }
 
-.formData[data-error]::after {
+/* Showing Data Errors */
+
+.formData.error input {
+  border: 3px solid #fe142f;
+}
+
+.formData.success input {
+  border: 3px solid #279e7a;
+}
+
+.formData small {
+  visibility: hidden;
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: .85rem;
+}
+
+.formData.error small {
+  color: #fe142f;
+  visibility: visible;
+}
+
+
+/* .error {
+  font-size: 12px;
+  padding: 6px 0 4px;
+  color: red;
+  display: block
+}
+
+.error:first-letter {
+  text-transform: uppercase
+} */
+
+/* .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
   color: #e54858;
@@ -304,13 +344,28 @@ input {
 }
 .formData[data-error-visible="true"] .text-control {
   border: 2px solid #e54858;
-}
-/* 
+} 
+
 input[data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: red;
+  content: attr(data-error);
+  font-size: 0.4em;
+  color: red;
 } */
+
+/* End Showing Data Errors */
+
+.checkbox-label {
+  margin-top: 17px;
+}
+
+.checkbox2-label {
+  margin-top: 25px;
+}
+
+.checkbox2-label:nth-child(5) {
+  margin-top: 5px;
+}
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -404,7 +459,8 @@ input[data-error]::after {
   background: #fe142f;
   display: block;
   margin: 0 auto;
-  margin-top: 18px;
+  margin-top: 30px;
+  margin-bottom: 10px;
   border-radius: 8px;
   font-size: 1rem;
   padding: 12px 82px;
@@ -482,6 +538,7 @@ input[data-error]::after {
 .text-label {
   font-weight: normal;
   font-size: 16px;
+  margin-top: 25px;
 }
 .hero-section {
   height: 657px;

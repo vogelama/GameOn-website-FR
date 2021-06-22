@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="modal.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link
+    rel="stylesheet"
+    href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay"
+    crossorigin="anonymous"/>
+    <link
       href="https://fonts.googleapis.com/css?family=DM+Sans"
       rel="stylesheet"
     />
@@ -61,9 +66,10 @@
           <div class="modal-body">
             <form
               name="reserve"
+              id="form"
               action="index.html"
               method="get"
-              onsubmit="return validate();"
+              onsubmit="return validate()"
             >
               <div
                 class="formData">
@@ -73,9 +79,9 @@
                   type="text"
                   id="first"
                   name="first"
-                  minlength="2"
-                  required
-                /><br>
+                />
+                <small>Error message</small>
+                <br>
               </div>
 
               <div
@@ -86,9 +92,9 @@
                   type="text"
                   id="last"
                   name="last"
-                  minlength="2"
-                  required
-                /><br>
+                />
+                <small>Error message</small>
+                <br>
               </div>
 
               <div
@@ -99,8 +105,9 @@
                   type="email"
                   id="email"
                   name="email"
-                  required
-                /><br>
+                />
+                <small>Error message</small>
+                <br>
               </div>
 
               <div
@@ -111,8 +118,9 @@
                   type="date"
                   id="birthdate"
                   name="birthdate"
-                  required
-                /><br>
+                />
+                <small>Error message</small>
+                <br>
               </div>
 
               <div
@@ -123,10 +131,8 @@
                   class="text-control" 
                   id="quantity" 
                   name="quantity" 
-                  min="0" 
-                  max="99"
-                  required
-                  > 
+                /> 
+                <small>Error message</small>
               </div>
 
               <p class="text-label">*Quelles villes ?</p>
@@ -137,7 +143,6 @@
                   id="location1"
                   name="location"
                   value="New York"
-                  required
                 />
                 <label class="checkbox-label" for="location1">
                   <span class="checkbox-icon"></span>
@@ -215,7 +220,7 @@
                 />
                 <label class="checkbox-label" for="location7">
                   <span class="checkbox-icon"></span>
-                  None
+                  Aucune
                 </label>
               </div>
 
@@ -228,8 +233,9 @@
                   required
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox1" required>
-                  <span class="checkbox-icon"></span>
+                <label class="checkbox2-label" for="checkbox2">
+                  <span class="checkbox-icon">
+                  </span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
 
@@ -242,7 +248,8 @@
                   id="checkbox2" 
                 />
                 <label class="checkbox2-label" for="checkbox2">
-                  <span class="checkbox-icon"></span>
+                  <span class="checkbox-icon">
+                  </span>
                   Je Je souhaite être prévenu des prochains évènements.
                 </label>
 
