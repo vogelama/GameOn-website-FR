@@ -8,8 +8,8 @@
   margin: 0;
   padding: 0;
 }
-/* Landing Page */
 
+/* General and Navigation */
 body {
   margin: 0;
   padding: 0;
@@ -49,31 +49,18 @@ img {
   color: #000000;
   text-align: center;
   padding: 10px 15px;
-  /* margin-left: 5px; */
   text-decoration: none;
   font-size: 18px;
   font-family: Roboto, sans-serif;
 }
 
 .topnav a:hover {
-  /* background-color: #ff0000; */
   color: #ff0000;
   border-radius: 8px;
   position: relative;
 }
 
-/* .topnav a:hover::after {
-  content: '';
-  width: calc(100% - 30px);
-  position: absolute;
-  left: 15px;
-  bottom: 8px;
-  height: 1px;
-  background-color: #fff;
-} */
-
 .topnav a.active {
-  /* background-color:; */
   color: #ff0000;
   border-radius: 8px;
   position: relative;
@@ -143,7 +130,6 @@ img {
 
   .topnav {
     margin: 20px 40px 0px 40px;
-    /* margin-bottom: 0; */
   }
 }
 
@@ -151,40 +137,14 @@ img {
   .topnav {
     margin: 10px 20px 0px 20px;
   }
-
 }
+/* End General and Navigation */
 
-/* @media screen and (max-width: 1040px) {
-  .topnav.responsive {position: relative;}
-  .topnav.responsive .icon {
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .topnav.responsive a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-} */
-
-
-
- /* @media screen and (max-width: 540px) {
-  .topnav a {display: none;}
-  .topnav a.icon {
-    float: right;
-    display: block;
-    margin-top: -15px;
-  }
-}  */
-
+/* Content Styles */
 main {
   font-size: 130%;
   font-weight: bolder;
   color: black;
-  /* padding-left: 2vw;
-  padding-right: 2vw; */
   margin: 0px 40px 15px;
   border-radius: 8px;
   text-align: justify;
@@ -197,7 +157,6 @@ main {
   margin: auto;
   padding: 11px 22px;
   color: #fff;
-  /* padding: 0.75rem 2.5rem; */
   border-radius: 8px;
   cursor: pointer;
 }
@@ -213,7 +172,6 @@ main {
 }
 
 /* Modal form */
-
 .button {
   background: #fe142f;
   margin-top: 0.5em;
@@ -269,7 +227,7 @@ label {
   font-weight: normal;
   display: inline-block;
   margin-bottom: 5px;
-  margin-top: 25px;
+  margin-top: 5px;
 }
 
 input {
@@ -287,9 +245,13 @@ input {
 }
 .formData {
   position: relative;
+  margin-bottom: 15px;
 }
 
 /* Showing Data Errors */
+.formData.error {
+  margin-bottom: 0px;
+}
 
 .formData.error input {
   border: 3px solid #fe142f;
@@ -301,11 +263,9 @@ input {
 
 .formData small {
   visibility: hidden;
-  position: absolute;
-  bottom: -20px;
-  left: 0;
-  padding: 0;
-  margin: 0;
+  padding: 5px;
+  padding-bottom: 0px;
+  margin-bottom: 0;
   font-family: inherit;
   font-size: .85rem;
 }
@@ -314,55 +274,17 @@ input {
   color: #fe142f;
   visibility: visible;
 }
-
-
-/* .error {
-  font-size: 12px;
-  padding: 6px 0 4px;
-  color: red;
-  display: block
-}
-
-.error:first-letter {
-  text-transform: uppercase
-} */
-
-/* .formData[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: #e54858;
-  display: block;
-  margin-top: 7px;
-  margin-bottom: 7px;
-  text-align: right;
-  line-height: 0.3;
-  opacity: 0;
-  transition: 0.3s;
-}
-.formData[data-error-visible="true"]::after {
-  opacity: 1;
-}
-.formData[data-error-visible="true"] .text-control {
-  border: 2px solid #e54858;
-} 
-
-input[data-error]::after {
-  content: attr(data-error);
-  font-size: 0.4em;
-  color: red;
-} */
-
 /* End Showing Data Errors */
 
 .checkbox-label {
-  margin-top: 17px;
+  margin-top: 15px;
 }
 
 .checkbox2-label {
-  margin-top: 25px;
+  margin-top: 15px;
 }
 
-.checkbox2-label:nth-child(5) {
+.checkbox2-label:nth-child(4) {
   margin-top: 5px;
 }
 
@@ -538,8 +460,11 @@ input[data-error]::after {
 .text-label {
   font-weight: normal;
   font-size: 16px;
-  margin-top: 25px;
+  margin-top: 15px;
 }
+/* End Modal Form */
+
+/* Hero Section */
 .hero-section {
   height: 657px;
   border-radius: 8px;
@@ -651,14 +576,7 @@ footer {
     margin: 0 auto;
     margin-top: 20px;
   }
-  /* .hero-content .btn-signup {
-    font-size: 1rem;
-    display: block;
-    margin: 0 auto;
-  } */
   .hero-headline {
-    /* margin-top: 0;
-    padding-top: 0; */
     font-size: 4rem;
     white-space: normal;
   }
@@ -671,11 +589,6 @@ footer {
     border-radius: 10px;
     margin-top: 20px;
   }
-  /* .hero-section > .btn-signup {
-    display: block;
-    margin: 32px auto 10px;
-    padding: 11px 22px;
-  } */
   .copyrights {
     margin-top: 50px;
     text-align: center;
@@ -722,4 +635,7 @@ footer {
     opacity: 1;
   }
 }
+/* End Hero Section */
+/* End Content Styles */
+
 
