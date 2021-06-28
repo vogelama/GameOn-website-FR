@@ -16,23 +16,43 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 
 // launch modal event
-modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
+modalBtn.forEach((btn) => btn.addEventListener("click", () => {
+  launchModal(modalbg);
+}));
 // launch modal form
-function launchModal() {
-  modalbg.style.display = "block";
+function launchModal(element) {
+  element.style.display = "block";
 }
+
 
 /* CLOSING FORM */
 // targeting x button to close form
-const closeForm = document.querySelectorAll(".close"); 
+const closeForm = document.querySelectorAll(".close");
 
 // launch modal close event
-closeForm.forEach((btn) => btn.addEventListener("click", closeModal));
-
+closeForm.forEach((btn) => btn.addEventListener("click", () => {
+  closeModal(modalbg)}));
 // launch modal close form
-function closeModal(){
-  modalbg.style.display = "none";
+function closeModal(element) {
+  element.style.display = "none";
+}
+
+
+/* CLOSING SUCCESS MESSAGE */
+const successBackground = document.querySelector(".success-background");
+// targeting x button to close form
+const closeSuccessForm = document.querySelectorAll(".close");
+// targeting success message close button 
+const successCloseBtn = document.querySelectorAll(".btn-close");
+// success message close event (x)
+
+closeSuccessForm.forEach((btn) => btn.addEventListener("click", closeSuccessMessage));
+// success message close event (btn)
+successCloseBtn.forEach((btn) => btn.addEventListener("click", closeSuccessMessage));
+//function to close success message for both (x) and (btn)
+function closeSuccessMessage() {
+  closeModal(successBackground);
+  closeModal(modalbg);
 }
 //////////////////////////////////////////////////////////////
 
@@ -43,41 +63,39 @@ const last = document.querySelector('#last');
 const email = document.querySelector('#email');
 const birthdate = document.querySelector('#birthdate');
 const quantity = document.querySelector('#quantity');
-
+const conditions = document.querySelector('#checkbox1');
 const form = document.querySelector('#reserve');
 
-
 /* attaching the submit event listener to the form using addEventListener */
-form.addEventListener('submit', function validate(e) {
+form.addEventListener('submit', function (e) {
 
   // validate input fields 
   let isFirstValid = checkFirst(),
-      isLastValid = checkLast(),
-      isEmailValid = checkEmail(),
-      isBirthdateValide = checkBirthdate(),
-      isQuantityValid = checkQuantity();
+    isLastValid = checkLast(),
+    isEmailValid = checkEmail(),
+    isBirthdateValide = checkBirthdate(),
+    isQuantityValid = checkQuantity(),
+    isConditionsValid = checkConditions();
 
   // validate form 
-  let isFormValid = 
-      isFirstValid &&
-      isLastValid &&
-      isEmailValid &&
-      isBirthdateValide &&
-      isQuantityValid;
+  let isFormValid =
+    isFirstValid &&
+    isLastValid &&
+    isEmailValid &&
+    isBirthdateValide &&
+    isQuantityValid &&
+    isConditionsValid;
 
   //don't submit to the server if form is invalid 
   if (!isFormValid) {
-      // prevent the form from submitting
-      e.preventDefault(); 
+    // prevent the form from submitting
+    e.preventDefault();
+  } else if (isFormValid) {
+    launchModal(successBackground);
+    // successBackground.style.display = "block";
+    e.preventDefault();
   }
 });
-
-
-/* Utility function for email */
-const isEmailValid = (email) => {
-  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
-};
 
 
 /* Functions that show the error / success message */
@@ -90,7 +108,7 @@ const showError = (input, message) => {
 
   // show the error message
   const error = formData.querySelector('small');
-  error.textContent = message; 
+  error.textContent = message;
 };
 const showSuccess = (input) => {
   // get the formData element
@@ -101,7 +119,14 @@ const showSuccess = (input) => {
 
   // hide the error message
   const error = formData.querySelector('small');
-  error.textContent = ''; 
+  error.textContent = '';
+};
+
+
+/* Utility function for email */
+const isEmailValid = (email) => {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
 };
 
 
@@ -116,7 +141,7 @@ const checkFirst = () => {
     showError(first, 'Au moins 2 lettres');
   } else {
     showSuccess(first);
-    valid = true; 
+    valid = true;
   }
   return valid;
 };
@@ -130,7 +155,7 @@ const checkLast = () => {
     showError(last, 'Au moins 2 lettres');
   } else {
     showSuccess(last);
-    valid = true; 
+    valid = true;
   }
   return valid;
 };
@@ -146,7 +171,7 @@ const checkEmail = () => {
     showError(email, 'Email est invalide');
   } else {
     showSuccess(email);
-    valid = true; 
+    valid = true;
   }
   return valid;
 };
@@ -160,7 +185,7 @@ const checkBirthdate = () => {
     showError(birthdate, 'Mettez date de naissance');
   } else {
     showSuccess(birthdate);
-    valid = true; 
+    valid = true;
   }
   return valid;
 };
@@ -170,14 +195,39 @@ const checkQuantity = () => {
   let valid = false;
   const quantityValue = quantity.value.trim();
 
-  if (quantityValue === '' || quantityValue > 99) {
+  if (quantityValue === '' || quantityValue < 0 || quantityValue > 99) {
     showError(quantity, 'Doit être un numéro entre 0 et 99');
   } else {
     showSuccess(quantity);
-    valid = true; 
+    valid = true;
   }
   return valid;
 };
+/* Validate if conditions box is checked */
+const checkConditions = () => {
+  
+  let valid = false;
+
+  if (conditions.checked === false) {
+    showError(conditions, 'Doit lire et accepter les conditions');
+  } else {
+    showSuccess(conditions);
+    valid = true;
+  }
+  return valid;
+};
+//////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
 
 
 

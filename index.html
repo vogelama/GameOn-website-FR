@@ -69,7 +69,6 @@
               id="reserve"
               action="index.html"
               method="get"
-              onsubmit="return validate()"
             >
               <div
                 class="formData">
@@ -226,14 +225,14 @@
                   type="checkbox"
                   name="checkbox"
                   id="checkbox1"
-                  required
                   checked
                 />
-                <label class="checkbox2-label" for="checkbox2">
+                <label class="checkbox2-label" for="checkbox1">
                   <span class="checkbox-icon">
                   </span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label>
+                <small></small>
 
                 <input 
                   class="checkbox-input" 
@@ -257,6 +256,15 @@
           </div>
         </div>
       </div>
+
+      <div class="success-background">
+        <div class="success-content">
+          <span class="close"></span>
+          <p class="success-message">Merci d'avoir soumis vos informations d'inscription!</p>
+          <button class="btn-submit btn-close">Fermer</button>
+        </div>
+      </div>
+
     </main>
 
     <footer>
