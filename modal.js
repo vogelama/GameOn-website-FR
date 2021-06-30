@@ -31,7 +31,7 @@ const closeForm = document.querySelectorAll(".close");
 
 // launch modal close event
 closeForm.forEach((btn) => btn.addEventListener("click", () => {
-  closeModal(modalbg)}));
+closeModal(modalbg)}));
 // launch modal close form
 function closeModal(element) {
   element.style.display = "none";
@@ -39,17 +39,18 @@ function closeModal(element) {
 
 
 /* CLOSING SUCCESS MESSAGE */
+// targeting entire success message
 const successBackground = document.querySelector(".success-background");
 // targeting x button to close form
 const closeSuccessForm = document.querySelectorAll(".close");
 // targeting success message close button 
 const successCloseBtn = document.querySelectorAll(".btn-close");
-// success message close event (x)
 
+// success message close event (x)
 closeSuccessForm.forEach((btn) => btn.addEventListener("click", closeSuccessMessage));
 // success message close event (btn)
 successCloseBtn.forEach((btn) => btn.addEventListener("click", closeSuccessMessage));
-//function to close success message for both (x) and (btn)
+// function to close success message for both (x) and (btn)
 function closeSuccessMessage() {
   closeModal(successBackground);
   closeModal(modalbg);
@@ -92,18 +93,19 @@ form.addEventListener('submit', function (e) {
     e.preventDefault();
   } else if (isFormValid) {
     launchModal(successBackground);
-    // successBackground.style.display = "block";
+    // prevent the success message from disappearing
     e.preventDefault();
   }
 });
 
 
-/* Functions that show the error / success message */
+/* FUNCTIONS THAT SHOW SUCCESS / ERROR MESSAGE */
 const showError = (input, message) => {
   // get the formData element
   const formData = input.parentElement;
-  // add the error class
+  // remove the success class
   formData.classList.remove('success');
+  // add the error class
   formData.classList.add('error');
 
   // show the error message
@@ -115,22 +117,23 @@ const showSuccess = (input) => {
   const formData = input.parentElement;
   // remove the error class
   formData.classList.remove('error');
+  // add the success class
   formData.classList.add('success');
 
-  // hide the error message
+  // take away error message
   const error = formData.querySelector('small');
   error.textContent = '';
 };
 
 
-/* Utility function for email */
+/* UTILITY FUNCTION FOR EMAIL */
 const isEmailValid = (email) => {
   const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   return re.test(email);
 };
 
 
-/* Input field validating functions */
+/* INPUT FIELD VALIDATING FUNCTIONS */
 /* Validate the first name field */
 const checkFirst = () => {
 
@@ -138,6 +141,7 @@ const checkFirst = () => {
   const firstValue = first.value.trim();
 
   if (firstValue.length < 2) {
+    // not less than 2 characters
     showError(first, 'Au moins 2 lettres');
   } else {
     showSuccess(first);
@@ -151,7 +155,8 @@ const checkLast = () => {
   let valid = false;
   const lastValue = last.value.trim();
 
-  if (lastValue.length < 2) {
+  if (lastValue.length < 2) { 
+    // not less than 2 characters
     showError(last, 'Au moins 2 lettres');
   } else {
     showSuccess(last);
@@ -165,9 +170,8 @@ const checkEmail = () => {
   let valid = false;
   const emailValue = email.value.trim();
 
-  if (emailValue === '') {
-    showError(email, 'Email est invalide');
-  } else if (!isEmailValid(emailValue)) {
+  if (emailValue === '' || !isEmailValid(emailValue)) {
+    // checks if email is emtpy
     showError(email, 'Email est invalide');
   } else {
     showSuccess(email);
@@ -182,6 +186,7 @@ const checkBirthdate = () => {
   const birthdateValue = birthdate.value.trim();
 
   if (birthdateValue === '') {
+    // checks if birthdate is empty
     showError(birthdate, 'Mettez date de naissance');
   } else {
     showSuccess(birthdate);
@@ -196,6 +201,7 @@ const checkQuantity = () => {
   const quantityValue = quantity.value.trim();
 
   if (quantityValue === '' || quantityValue < 0 || quantityValue > 99) {
+    // checks if value is empty or not between 0 and 99
     showError(quantity, 'Doit être un numéro entre 0 et 99');
   } else {
     showSuccess(quantity);
@@ -209,6 +215,7 @@ const checkConditions = () => {
   let valid = false;
 
   if (conditions.checked === false) {
+    // checks if box is checked 
     showError(conditions, 'Doit lire et accepter les conditions');
   } else {
     showSuccess(conditions);

@@ -248,34 +248,6 @@ input {
   margin-bottom: 15px;
 }
 
-/* Showing Data Errors */
-.formData.error {
-  margin-bottom: 0px;
-}
-
-.formData.error input {
-  border: 3px solid #fe142f;
-}
-
-.formData.success input {
-  border: 3px solid #279e7a;
-}
-
-.formData small {
-  visibility: hidden;
-  display: block;
-  padding: 5px;
-  padding-bottom: 0px;
-  margin-bottom: 0;
-  font-family: inherit;
-  font-size: .85rem;
-}
-
-.formData.error small {
-  color: #fe142f;
-  visibility: visible;
-}
-/* End Showing Data Errors */
 .checkbox2-label {
   margin-top: 15px;
 }
@@ -381,7 +353,7 @@ input {
   margin-bottom: 10px;
   border-radius: 8px;
   font-size: 1rem;
-  padding: 12px 82px;
+  padding: 12px 50px;
   color: #fff;
   cursor: pointer;
   border: 0;
@@ -634,6 +606,35 @@ footer {
 /* End Hero Section */
 /* End Content Styles */
 
+/* Showing Data Errors */
+.formData.error {
+  margin-bottom: 0px;
+}
+
+.formData.error input {
+  border: 3px solid #fe142f;
+}
+
+.formData.success input {
+  border: 3px solid #279e7a;
+}
+
+.formData small {
+  visibility: hidden;
+  display: block;
+  padding: 5px;
+  padding-bottom: 0px;
+  margin-bottom: 0;
+  font-family: inherit;
+  font-size: .85rem;
+}
+
+.formData.error small {
+  color: #fe142f;
+  visibility: visible;
+}
+/* End Showing Data Errors */
+
 /* Success Message Styles */
 .success-background {
   display: block;
@@ -664,6 +665,7 @@ footer {
   position: relative;
   color: #fff;
   padding-top: 10px;
+  position: relative;
 }
 
 .success-message {
@@ -673,8 +675,9 @@ footer {
 
 .btn-close {
   position: absolute;
-  bottom: 20px;
-  left: 28%;
+  bottom: 40px; 
+  left: 50%;
+  margin-left: -75px;
 }
 /* End Success Message Styles */
 
